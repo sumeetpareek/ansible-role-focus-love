@@ -1,2 +1,14 @@
 ---
 # tasks file for ansible-role-focus-love
+
+# - name: Read variables 
+#TODO
+
+- name: Activate redirects for sites that distract you
+  lineinfile:
+    dest=/etc/hosts
+    regexp={{ item }}
+    line='{{ focus_love_site }} {{ item }}'
+    state=absent
+  sudo: yes
+  with_items: distracting_sites

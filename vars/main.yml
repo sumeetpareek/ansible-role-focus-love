@@ -1,2 +1,6 @@
 ---
 # vars file for ansible-role-focus-love
+distracting_sites:
+- facebook.com
+- google.com
+focus_love_site: me.com
