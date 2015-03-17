@@ -22,3 +22,10 @@
     state=absent
   sudo: yes
   with_items: distracting_sites
+
+- name: flush the DNS cache on your mac
+  shell: dscacheutil -flushcache
+  sudo: yesa
+
+# TODO take in arguments from the command line for sites to block and then preserve them
+# TODO implement both blocking and unblocking
