@@ -12,3 +12,13 @@
     state=absent
   sudo: yes
   with_items: distracting_sites
+
+
+- name: Activate www redirects for sites that distract you
+  lineinfile:
+    dest=/etc/hosts
+    regexp={{ item }}
+    line='{{ focus_love_site }} www.{{ item }}'
+    state=absent
+  sudo: yes
+  with_items: distracting_sites
