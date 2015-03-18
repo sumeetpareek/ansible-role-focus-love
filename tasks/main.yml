@@ -4,28 +4,37 @@
 # - name: Read variables 
 #TODO
 
-- name: Activate redirects for sites that distract you
-  lineinfile:
-    dest=/etc/hosts
-    regexp={{ item }}
-    line='{{ focus_love_site }} {{ item }}'
-    state=absent
-  sudo: yes
-  with_items: distracting_sites
+- name: Record site in the distracting sites list
+  lineinfile: 
+    dest=../vars/main.yml
+    regexp={{ site }}
+    line='hope this works {{ site }}'
+    state=present
 
 
-- name: Activate www redirects for sites that distract you
-  lineinfile:
-    dest=/etc/hosts
-    regexp={{ item }}
-    line='{{ focus_love_site }} www.{{ item }}'
-    state=absent
-  sudo: yes
-  with_items: distracting_sites
 
-- name: flush the DNS cache on your mac
-  shell: dscacheutil -flushcache
-  sudo: yesa
+# - name: Activate redirects for sites that distract you
+#   lineinfile:
+#     dest=/etc/hosts
+#     regexp={{ item }}
+#     line='{{ focus_love_site }} {{ item }}'
+#     state=absent
+#   sudo: yes
+#   with_items: distracting_sites
+
+
+# - name: Activate www redirects for sites that distract you
+#   lineinfile:
+#     dest=/etc/hosts
+#     regexp={{ item }}
+#     line='{{ focus_love_site }} www.{{ item }}'
+#     state=absent
+#   sudo: yes
+#   with_items: distracting_sites
+
+# - name: flush the DNS cache on your mac
+#   shell: dscacheutil -flushcache
+#   sudo: yesa
 
 # TODO take in arguments from the command line for sites to block and then preserve them
 # TODO implement both blocking and unblocking
